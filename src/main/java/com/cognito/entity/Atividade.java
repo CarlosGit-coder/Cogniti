@@ -14,7 +14,15 @@ public class Atividade {
   private String pergunta;
   private String resposta_correta;
   private String tipo;
-  private int fk_atividade_aula;
+
+  public Atividade(int id_atividade, int id_aula, String pergunta, String resposta_correta, String tipo,
+      int fk_atividade_aula) {
+    this.id_atividade = id_atividade;
+    this.id_aula = id_aula;
+    this.pergunta = pergunta;
+    this.resposta_correta = resposta_correta;
+    this.tipo = tipo;
+  }
 
   public int getId_atividade() {
     return id_atividade;
@@ -56,11 +64,4 @@ public class Atividade {
     this.tipo = tipo;
   }
 
-  public int getFk_atividade_aula() {
-    return fk_atividade_aula;
-  }
-
-  public void setFk_atividade_aula(int fk_atividade_aula) {
-    this.fk_atividade_aula = fk_atividade_aula;
-  }
 }
