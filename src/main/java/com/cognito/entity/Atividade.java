@@ -1,5 +1,6 @@
 package com.cognito.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,9 +11,13 @@ public class Atividade {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private int id_atividade;
+  @Column(name = "id_aula")
   private int id_aula;
+  @Column(name = "pergunta")
   private String pergunta;
+  @Column(name = "resposta_correta")
   private String resposta_correta;
+  @Column(name = "tipo")
   private String tipo;
 
   public Atividade(int id_atividade, int id_aula, String pergunta, String resposta_correta, String tipo,

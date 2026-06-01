@@ -2,6 +2,7 @@ package com.cognito.entity;
 
 import java.sql.Timestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,9 +12,13 @@ import jakarta.persistence.Id;
 public class TesteNivelamento {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  @Column(name = "id_teste")
   private int id_teste;
+  @Column(name = "id_usuario")
   private int id_usuario;
+  @Column(name = "nivel_detectado")
   private String nivel_detectado;
+  @Column(name = "data_realizacao")
   private Timestamp data_realizacao;
 
   public TesteNivelamento(int id_teste, int id_usuario, String nivel_detectado, Timestamp data_realizacao) {

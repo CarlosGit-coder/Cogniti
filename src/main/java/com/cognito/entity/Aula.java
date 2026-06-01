@@ -11,8 +11,11 @@ public class Aula {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private int id_aula;
+  @Column(name = "titulo")
   private String titulo;
+  @Column(name = "descricao")
   private String descricao;
+  @Column(name = "nivel")
   private String nivel;
 
   public int getId_aula() {

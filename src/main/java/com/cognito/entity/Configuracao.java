@@ -1,5 +1,6 @@
 package com.cognito.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,10 +11,15 @@ public class Configuracao {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private int id_config;
+  @Column(name = "id_usuario")
   private int id_usuario;
+  @Column(name = "alto_contraste")
   private boolean alto_contraste;
+  @Column(name = "texto_ampliado")
   private boolean texto_ampliado;
+  @Column(name = "sensibilidade_toque")
   private float sensibilidade_toque;
+  @Column(name = "modo_voz")
   private boolean modo_voz;
 
   public Configuracao(int id_config, int id_usuario, boolean alto_contraste, boolean texto_ampliado,
