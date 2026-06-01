@@ -3,6 +3,7 @@ package com.cognito.entity;
 import java.sql.Timestamp;
 import java.sql.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +14,15 @@ public class Usuario {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private Long id_usuario;
+  @Column(name = "nome")
   private String nome;
+  @Column(name = "email")
   private String email;
+  @Column(name = "senha")
   private String senha;
+  @Column(name = "data_nascimento")
   private Date data_nascimento;
+  @Column(name = "data_cadastro")
   private Timestamp data_cadastro;
 
   public Long getId_usuario() {
