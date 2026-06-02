@@ -11,21 +11,13 @@ import jakarta.persistence.Id;
 public class Aula {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private int id_aula;
+  private int idAula;
   @Column(name = "titulo")
   private String titulo;
   @Column(name = "descricao")
   private String descricao;
   @Column(name = "nivel")
   private String nivel;
-
-  public int getId_aula() {
-    return id_aula;
-  }
-
-  public void setId_aula(int id_aula) {
-    this.id_aula = id_aula;
-  }
 
   public String getTitulo() {
     return titulo;
@@ -51,11 +43,19 @@ public class Aula {
     this.nivel = nivel;
   }
 
-  public Aula(String nivel, int id_aula, String titulo, String descricao) {
-    this.nivel = nivel;
-    this.id_aula = id_aula;
+  public int getIdAula() {
+    return idAula;
+  }
+
+  public void setIdAula(int idAula) {
+    this.idAula = idAula;
+  }
+
+  public Aula(int idAula, String titulo, String descricao, String nivel) {
+    this.idAula = idAula;
     this.titulo = titulo;
     this.descricao = descricao;
+    this.nivel = nivel;
   }
 
 }

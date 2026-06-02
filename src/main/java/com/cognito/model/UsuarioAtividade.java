@@ -7,50 +7,53 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "USUARIO_ATIVIDADE")
 public class UsuarioAtividade {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id_usuario;
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id_atividade;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_uatv_usuario", nullable = false)
+  private int idUsuario;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_uatv_atividade", nullable = false)
+  private int idAtividade;
   @Column(name = "resposta_dada")
-  private String resposta_dada;
+  private String respostaDada;
   @Column(name = "acertou")
   private String acertou;
   @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
   @Column(name = "data_realizacao")
-  private Timestamp data_realizacao;
+  private Timestamp dataRealizacao;
 
-  public int getId_usuario() {
-    return id_usuario;
+  public int getIdUsuario() {
+    return idUsuario;
   }
 
-  public void setId_usuario(int id_usuario) {
-    this.id_usuario = id_usuario;
+  public void setIdUsuario(int idUsuario) {
+    this.idUsuario = idUsuario;
   }
 
-  public int getId_atividade() {
-    return id_atividade;
+  public int getIdAtividade() {
+    return idAtividade;
   }
 
-  public void setId_atividade(int id_atividade) {
-    this.id_atividade = id_atividade;
+  public void setIdAtividade(int idAtividade) {
+    this.idAtividade = idAtividade;
   }
 
-  public String getResposta_dada() {
-    return resposta_dada;
+  public String getRespostaDada() {
+    return respostaDada;
   }
 
-  public void setResposta_dada(String resposta_dada) {
-    this.resposta_dada = resposta_dada;
+  public void setRespostaDada(String respostaDada) {
+    this.respostaDada = respostaDada;
   }
 
   public String getAcertou() {
@@ -61,21 +64,21 @@ public class UsuarioAtividade {
     this.acertou = acertou;
   }
 
-  public Timestamp getData_realizacao() {
-    return data_realizacao;
+  public Timestamp getDataRealizacao() {
+    return dataRealizacao;
   }
 
-  public void setData_realizacao(Timestamp data_realizacao) {
-    this.data_realizacao = data_realizacao;
+  public void setDataRealizacao(Timestamp dataRealizacao) {
+    this.dataRealizacao = dataRealizacao;
   }
 
-  public UsuarioAtividade(int id_usuario, int id_atividade, String resposta_dada, String acertou,
-      Timestamp data_realizacao) {
-    this.id_usuario = id_usuario;
-    this.id_atividade = id_atividade;
-    this.resposta_dada = resposta_dada;
+  public UsuarioAtividade(int idUsuario, int idAtividade, String respostaDada, String acertou,
+      Timestamp dataRealizacao) {
+    this.idUsuario = idUsuario;
+    this.idAtividade = idAtividade;
+    this.respostaDada = respostaDada;
     this.acertou = acertou;
-    this.data_realizacao = data_realizacao;
+    this.dataRealizacao = dataRealizacao;
   }
 
 }

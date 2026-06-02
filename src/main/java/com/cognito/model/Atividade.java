@@ -3,51 +3,46 @@ package com.cognito.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Atividade {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private int id_atividade;
+  private int idAtividade;
 
-  @Column(name = "id_aula")
-  private int id_aula;
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_atividade_aula", nullable = false)
+  private int idAula;
 
   @Column(name = "pergunta")
   private String pergunta;
 
   @Column(name = "resposta_correta")
-  private String resposta_correta;
+  private String respostaCorreta;
 
   @Column(name = "tipo")
   private String tipo;
 
-  public Atividade(int id_atividade, int id_aula, String pergunta, String resposta_correta, String tipo,
-      int fk_atividade_aula) {
-    this.id_atividade = id_atividade;
-    this.id_aula = id_aula;
-    this.pergunta = pergunta;
-    this.resposta_correta = resposta_correta;
-    this.tipo = tipo;
+  public int getIdAtividade() {
+    return idAtividade;
   }
 
-  public int getId_atividade() {
-    return id_atividade;
+  public void setIdAtividade(int idAtividade) {
+    this.idAtividade = idAtividade;
   }
 
-  public void setId_atividade(int id_atividade) {
-    this.id_atividade = id_atividade;
+  public int getIdAula() {
+    return idAula;
   }
 
-  public int getId_aula() {
-    return id_aula;
-  }
-
-  public void setId_aula(int id_aula) {
-    this.id_aula = id_aula;
+  public void setIdAula(int idAula) {
+    this.idAula = idAula;
   }
 
   public String getPergunta() {
@@ -58,12 +53,12 @@ public class Atividade {
     this.pergunta = pergunta;
   }
 
-  public String getResposta_correta() {
-    return resposta_correta;
+  public String getRespostaCorreta() {
+    return respostaCorreta;
   }
 
-  public void setResposta_correta(String resposta_correta) {
-    this.resposta_correta = resposta_correta;
+  public void setRespostaCorreta(String respostaCorreta) {
+    this.respostaCorreta = respostaCorreta;
   }
 
   public String getTipo() {
@@ -71,6 +66,14 @@ public class Atividade {
   }
 
   public void setTipo(String tipo) {
+    this.tipo = tipo;
+  }
+
+  public Atividade(int idAtividade, int idAula, String pergunta, String respostaCorreta, String tipo) {
+    this.idAtividade = idAtividade;
+    this.idAula = idAula;
+    this.pergunta = pergunta;
+    this.respostaCorreta = respostaCorreta;
     this.tipo = tipo;
   }
 

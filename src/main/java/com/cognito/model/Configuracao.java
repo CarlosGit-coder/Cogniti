@@ -6,78 +6,83 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Configuracao {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private int id_config;
-  @Column(name = "id_usuario")
-  private int id_usuario;
+  private int idConfig;
+
+  @OneToOne
+  @JoinColumn(name = "fk_config_usuario", nullable = false)
+  private int idUsuario;
   @Column(name = "alto_contraste")
-  private boolean alto_contraste;
+  private boolean altoContraste;
   @Column(name = "texto_ampliado")
-  private boolean texto_ampliado;
+  private boolean textoAmpliado;
   @Column(name = "sensibilidade_toque")
-  private float sensibilidade_toque;
+  private float sensibilidadeToque;
   @Column(name = "modo_voz")
-  private boolean modo_voz;
+  private boolean modoVoz;
 
-  public Configuracao(int id_config, int id_usuario, boolean alto_contraste, boolean texto_ampliado,
-      float sensibilidade_toque, boolean modo_voz) {
-    this.id_config = id_config;
-    this.id_usuario = id_usuario;
-    this.alto_contraste = alto_contraste;
-    this.texto_ampliado = texto_ampliado;
-    this.sensibilidade_toque = sensibilidade_toque;
-    this.modo_voz = modo_voz;
+  public int getIdConfig() {
+    return idConfig;
   }
 
-  public int getId_config() {
-    return id_config;
+  public void setIdConfig(int idConfig) {
+    this.idConfig = idConfig;
   }
 
-  public void setId_config(int id_config) {
-    this.id_config = id_config;
+  public int getIdUsuario() {
+    return idUsuario;
   }
 
-  public int getId_usuario() {
-    return id_usuario;
+  public void setIdUsuario(int idUsuario) {
+    this.idUsuario = idUsuario;
   }
 
-  public void setId_usuario(int id_usuario) {
-    this.id_usuario = id_usuario;
+  public boolean isAltoContraste() {
+    return altoContraste;
   }
 
-  public boolean isAlto_contraste() {
-    return alto_contraste;
+  public void setAltoContraste(boolean altoContraste) {
+    this.altoContraste = altoContraste;
   }
 
-  public void setAlto_contraste(boolean alto_contraste) {
-    this.alto_contraste = alto_contraste;
+  public boolean isTextoAmpliado() {
+    return textoAmpliado;
   }
 
-  public boolean isTexto_ampliado() {
-    return texto_ampliado;
+  public void setTextoAmpliado(boolean textoAmpliado) {
+    this.textoAmpliado = textoAmpliado;
   }
 
-  public void setTexto_ampliado(boolean texto_ampliado) {
-    this.texto_ampliado = texto_ampliado;
+  public float getSensibilidadeToque() {
+    return sensibilidadeToque;
   }
 
-  public float getSensibilidade_toque() {
-    return sensibilidade_toque;
+  public void setSensibilidadeToque(float sensibilidadeToque) {
+    this.sensibilidadeToque = sensibilidadeToque;
   }
 
-  public void setSensibilidade_toque(float sensibilidade_toque) {
-    this.sensibilidade_toque = sensibilidade_toque;
+  public boolean isModoVoz() {
+    return modoVoz;
   }
 
-  public boolean isModo_voz() {
-    return modo_voz;
+  public void setModoVoz(boolean modoVoz) {
+    this.modoVoz = modoVoz;
   }
 
-  public void setModo_voz(boolean modo_voz) {
-    this.modo_voz = modo_voz;
+  public Configuracao(int idConfig, int idUsuario, boolean altoContraste, boolean textoAmpliado,
+      float sensibilidadeToque, boolean modoVoz) {
+    this.idConfig = idConfig;
+    this.idUsuario = idUsuario;
+    this.altoContraste = altoContraste;
+    this.textoAmpliado = textoAmpliado;
+    this.sensibilidadeToque = sensibilidadeToque;
+    this.modoVoz = modoVoz;
   }
+
 }

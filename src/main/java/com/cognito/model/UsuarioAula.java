@@ -7,49 +7,47 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "USUARIO_AULA")
 public class UsuarioAula {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id_usuario;
   @OneToOne
-  @JoinColumn(name = "id_aula")
-  private int id_aula;
+  @JoinColumn(name = "fk_ua_usuario", nullable = false)
+  private int idUsuario;
+  @OneToOne
+  @JoinColumn(name = "fk_ua_aula", nullable = false)
+  private int idAula;
   @DateTimeFormat(pattern = "yyyy-MM-dd HH;mm:ss")
   @Column(name = "data_inicio")
-  private Timestamp data_inicio;
+  private Timestamp dataInicio;
   @Column(name = "concluida")
   private boolean concluida;
 
-  public int getId_usuario() {
-    return id_usuario;
+  public int getIdUsuario() {
+    return idUsuario;
   }
 
-  public void setId_usuario(int id_usuario) {
-    this.id_usuario = id_usuario;
+  public void setIdUsuario(int idUsuario) {
+    this.idUsuario = idUsuario;
   }
 
-  public int getId_aula() {
-    return id_aula;
+  public int getIdAula() {
+    return idAula;
   }
 
-  public void setId_aula(int id_aula) {
-    this.id_aula = id_aula;
+  public void setIdAula(int idAula) {
+    this.idAula = idAula;
   }
 
-  public Timestamp getData_inicio() {
-    return data_inicio;
+  public Timestamp getDataInicio() {
+    return dataInicio;
   }
 
-  public void setData_inicio(Timestamp data_inicio) {
-    this.data_inicio = data_inicio;
+  public void setDataInicio(Timestamp dataInicio) {
+    this.dataInicio = dataInicio;
   }
 
   public boolean isConcluida() {
@@ -60,10 +58,10 @@ public class UsuarioAula {
     this.concluida = concluida;
   }
 
-  public UsuarioAula(int id_usuario, int id_aula, Timestamp data_inicio, boolean concluida) {
-    this.id_usuario = id_usuario;
-    this.id_aula = id_aula;
-    this.data_inicio = data_inicio;
+  public UsuarioAula(int idUsuario, int idAula, Timestamp dataInicio, boolean concluida) {
+    this.idUsuario = idUsuario;
+    this.idAula = idAula;
+    this.dataInicio = dataInicio;
     this.concluida = concluida;
   }
 

@@ -5,59 +5,67 @@ import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class TesteNivelamento {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   @Column(name = "id_teste")
-  private int id_teste;
-  @Column(name = "id_usuario")
-  private int id_usuario;
+  private int idTeste;
+
+  @OneToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "fk_teste_usuario", nullable = false)
+  private int idUsuario;
+
   @Column(name = "nivel_detectado")
-  private String nivel_detectado;
+  private String nivelDetectado;
+
   @Column(name = "data_realizacao")
-  private Timestamp data_realizacao;
+  private Timestamp dataRealizacao;
 
-  public TesteNivelamento(int id_teste, int id_usuario, String nivel_detectado, Timestamp data_realizacao) {
-    this.id_teste = id_teste;
-    this.id_usuario = id_usuario;
-    this.nivel_detectado = nivel_detectado;
-    this.data_realizacao = data_realizacao;
+  public int getIdTeste() {
+    return idTeste;
   }
 
-  public int getId_teste() {
-    return id_teste;
+  public void setIdTeste(int idTeste) {
+    this.idTeste = idTeste;
   }
 
-  public void setId_teste(int id_teste) {
-    this.id_teste = id_teste;
+  public int getIdUsuario() {
+    return idUsuario;
   }
 
-  public int getId_usuario() {
-    return id_usuario;
+  public void setIdUsuario(int idUsuario) {
+    this.idUsuario = idUsuario;
   }
 
-  public void setId_usuario(int id_usuario) {
-    this.id_usuario = id_usuario;
+  public String getNivelDetectado() {
+    return nivelDetectado;
   }
 
-  public String getNivel_detectado() {
-    return nivel_detectado;
+  public void setNivelDetectado(String nivelDetectado) {
+    this.nivelDetectado = nivelDetectado;
   }
 
-  public void setNivel_detectado(String nivel_detectado) {
-    this.nivel_detectado = nivel_detectado;
+  public Timestamp getDataRealizacao() {
+    return dataRealizacao;
   }
 
-  public Timestamp getData_realizacao() {
-    return data_realizacao;
+  public void setDataRealizacao(Timestamp dataRealizacao) {
+    this.dataRealizacao = dataRealizacao;
   }
 
-  public void setData_realizacao(Timestamp data_realizacao) {
-    this.data_realizacao = data_realizacao;
+  public TesteNivelamento(int idTeste, int idUsuario, String nivelDetectado, Timestamp dataRealizacao) {
+    this.idTeste = idTeste;
+    this.idUsuario = idUsuario;
+    this.nivelDetectado = nivelDetectado;
+    this.dataRealizacao = dataRealizacao;
   }
+
 }

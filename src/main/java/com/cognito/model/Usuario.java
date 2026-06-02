@@ -14,7 +14,7 @@ import jakarta.persistence.Id;
 public class Usuario {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private Long id_usuario;
+  private Long idUsuario;
   @Column(name = "nome")
   private String nome;
   @Column(name = "email")
@@ -22,9 +22,9 @@ public class Usuario {
   @Column(name = "senha")
   private String senha;
   @Column(name = "data_nascimento")
-  private Date data_nascimento;
+  private Date dataNascimento;
   @Column(name = "data_cadastro")
-  private Timestamp data_cadastro;
+  private Timestamp dataCadastro;
 
   public Long getId_usuario() {
     return id_usuario;
