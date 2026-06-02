@@ -1,5 +1,5 @@
 
-package com.cognito.entity;
+package com.cognito.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

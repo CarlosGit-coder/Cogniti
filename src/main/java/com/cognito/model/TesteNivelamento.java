@@ -1,4 +1,5 @@
-package com.cognito.entity;
+
+package com.cognito.model;
 
 import java.sql.Timestamp;
 

@@ -1,4 +1,5 @@
-package com.cognito.entity;
+
+package com.cognito.model;
 
 import java.sql.Timestamp;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,9 +19,8 @@ public class UsuarioAula {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id_usuario;
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "id_aula")
+  @OneToOne
+  @JoinColumn(name = "id_aula")
   private int id_aula;
   @DateTimeFormat(pattern = "yyyy-MM-dd HH;mm:ss")
   @Column(name = "data_inicio")
